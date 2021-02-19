@@ -14,6 +14,11 @@ import java.util.concurrent.TimeUnit;
 /**
  * @Author: w
  * @Date: 2021/2/19 22:30
+ *
+ * 对于缓存击穿问题
+ * 1：可以使用分布式锁进行解决
+ * 2：设置热点数据永不过期
+ * 3：创建定时任务维护热点数据过期时间
  */
 @Service
 public class CachePunctureServiceImpl extends ServiceImpl<OrderMapper, Orders> implements CachePunctureService {
