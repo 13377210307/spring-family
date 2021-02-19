@@ -61,4 +61,36 @@
 （3）：串行化：
 
 
+六：redis持久化
+
+1：redis持久化的两种方式：
+RDB和AOF
+
+2：RDB
+（1）概念：在指定时间间隔内将内存中的数据写入到磁盘中
+（2）触发方式：save、bgsave、自动化
+    1：save：该命令会阻塞redis服务器，直到RDB文件写入完成
+    2：bgsave：该命令会fork一个子进程去进行RDB文件的写入
+    3：自动化：save m n ：在m秒内修改了n个数据触发
+
+3：AOF
+（1）概念：将写命令追加到AOF文件中
+（2）触发方式：
+    1：alaways：一直，只要有修改，就会触发
+    2：everySec：每秒修改
+    3：no：从不追加
+    
+4：两者的优缺点
+
+
+七：redis的删除策略
+
+1：lru（allKeylru和volatilelru：删除最近最少使用的key）
+2：noevecation：从不删除
+3：random（allKeyRandom和volatileRandom：随机删除key）
+4：ttl：删除生存时间最短的key
+
+八：
+
+
 
