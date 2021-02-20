@@ -113,21 +113,15 @@ aof：启动redis时，加载持久化数据不如rdb快。
 
 1：定时删除：在指定时间删除
 2：惰性删除：到了过期时间先不删除，直到下一次使用的时候进行删除
-3：定期删除：
+3：定期删除：周期性轮询redis中的数据，采用随机抽取的策略（随机挑选w个key），利用过期数据占比方式控制删除频度（若一轮删除的key的数量占比>25%，则会再次遍历这个expires，否则遍历下一个expires
 （1）：redis在启动的时候读取配置文件hz的值，默认为10
-（2）：每秒执行hz次serverCron()->dataBasesCron()->activeExpireCyle()
+（2）：每秒执行hz次serverCron()->dataBasesCron()->activeExpireCycle()
 （3）：
 
 redis使用的定期删除+惰性删除
 
 逐出算法：
 
-
-
-1：lru（allKeylru和volatilelru：删除最近最少使用的key）
-2：noevecation：从不删除
-3：random（allKeyRandom和volatileRandom：随机删除key）
-4：ttl：删除生存时间最短的key
 
 八：位图
 
@@ -149,6 +143,14 @@ exists key
 
 3：为什么aof要先把命令追加到缓冲区
 redis使用单线程响应命令，如果每次写入命令都直接追加到硬盘，性能就会取决于硬盘负载。
+
+
+十：redis的内存淘汰策略
+
+1：lru（allKeylru和volatilelru：删除最近最少使用的key）
+2：noevecation：从不删除
+3：random（allKeyRandom和volatileRandom：随机删除key）
+4：ttl：删除生存时间最短的key
 
 
 

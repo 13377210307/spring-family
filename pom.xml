@@ -11,6 +11,8 @@
     <modules>
         <module>spring</module>
         <module>caches</module>
+        <module>mq</module>
+        <module>zookeeper</module>
     </modules>
 
     <parent>
