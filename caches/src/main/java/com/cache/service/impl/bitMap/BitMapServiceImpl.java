@@ -3,8 +3,6 @@ package com.cache.service.impl.bitMap;
 import com.cache.service.bitMap.BitMapService;
 import com.cache.vo.LikeVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
-import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
