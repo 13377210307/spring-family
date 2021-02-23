@@ -38,3 +38,24 @@
 1：普通集群模式：在多台机器上启动多个mq实例，但创建的队列只会保存在master的实例上，其他实例同步接收master实例的消息，若master宕机了，也会造成消息丢失
 
 2：镜像集群模式：多台机器启动多个实例，创建队列都会保存到各个mq实例中，写入queue的消息也会同步到其他mq实例中；但性能开销较大，消息需要同步所有机器，网络带宽压力大
+
+二：AMQP高级消息队列协议核心概念
+
+1：Server：也叫Broker，接受客户端连接，实现AMQP实体服务。
+
+2：Connection：应用程序与Broker的网络连接
+
+3：Channel：网络信道，Channel是进行消息读写的通道，每个Channel代表一个会话任务
+
+4：Message :消息：服务与应用程序之间传送的数据，由Properties和body组成，Properties可是对消息进行修饰，比如消息的优先级，延迟等高级特性，Body则就是消息体的内容。
+
+5：Virtual Host 虚拟地址，用于进行逻辑隔离，最上层的消息路由，一个虚拟主机理由可以有若干个Exhange和Queueu，同一个虚拟主机里面不能有相同名字的Exchange或Queueu
+
+6：Exchange：交换机，接受消息，根据路由键发送消息到绑定的队列。
+
+7：Bindings：Exchange和Queue之间的虚拟连接，binding中可以绑定多个routing key.
+
+8：Routing key：是一个路由规则，虚拟机可以用它来确定如何路由一个特定消息。
+
+9：Queue：队列：也成为Message Queue,消息队列，保存消息并将它们转发给消费者。
+  
