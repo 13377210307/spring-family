@@ -13,6 +13,7 @@
         <module>caches</module>
         <module>mq</module>
         <module>zookeeper</module>
+        <module>collections</module>
     </modules>
 
     <parent>

@@ -8,26 +8,24 @@ import org.springframework.stereotype.Component;
 
 /**
  * @Author: w
- * @Date: 2021/2/17 14:57
- *
- * 切面配置
+ * @Date: 2021/2/25 18:11
  */
 @Aspect
 @Component
-public class AspectConfig {
+public class GetDataAspectConfig {
 
     /**
-     * 配置需要切入的表达式：该service下所有的类、方法及所在的参数都会被这个切点拦截到
+     * 配置需要切入的表达式：只对getData方法进行切入
      */
-    @Pointcut("execution(* com.spring.aop.demo.service.LoginService.*(..)))")
-    public void pointcut() {
+    @Pointcut("execution(* com.spring.aop.demo.service.GetDataService.getData())")
+    public void pointCut() {
 
     }
 
     /**
-     * 增强方式：环绕增强
+     * 增强方式
      */
-    @Around("pointcut()")
+    @Around("pointCut()")
     public Object around(ProceedingJoinPoint point) throws Throwable {
         long start = System.currentTimeMillis();
         Object result = point.proceed();
@@ -35,4 +33,5 @@ public class AspectConfig {
         System.out.println("消耗时间："+(end - start));
         return result;
     }
+
 }
